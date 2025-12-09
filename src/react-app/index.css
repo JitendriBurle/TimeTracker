@@ -1,0 +1,728 @@
+/* 
+  ══════════════════════════════════════════════════════════════
+  🧊 AQUA GLASS CYBERNATURE UI DESIGN SYSTEM
+  ══════════════════════════════════════════════════════════════
+  
+  Theme: Futuristic glassmorphism meets organic aqua tones
+  Colors: Electric cyans, teals, mints, and deep purples
+  Typography: Orbitron (headings) + Inter (body)
+  Surface Style: Frosted glass with geometric backgrounds
+  Spacing: Precise 8px base unit scale
+  Borders: Heavily rounded (pill-like elements)
+  Shadows: Soft cyan glows and layered depth
+  Animations: Smooth glassy transitions and shimmer effects
+*/
+
+/* ══════════════════════════════════════════════════════════════
+   🎨 DESIGN TOKENS - Aqua Glass Palette
+   ══════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Aqua Core Colors */
+  --aqua-electric: #00D9FF;
+  --aqua-bright: #00B8D4;
+  --aqua-deep: #0097A7;
+  --aqua-dark: #00838F;
+  
+  /* Mint & Teal Accents */
+  --mint-bright: #1DE9B6;
+  --mint-medium: #00BFA5;
+  --teal-deep: #00897B;
+  --teal-forest: #00695C;
+  
+  /* Electric Purple */
+  --purple-electric: #6200EA;
+  --purple-neon: #7C4DFF;
+  --purple-deep: #651FFF;
+  --purple-dark: #4527A0;
+  
+  /* Cool Neutrals */
+  --glass-white: #FFFFFF;
+  --glass-frost: #F0FDFF;
+  --glass-mist: #E0F7FA;
+  --glass-cool: #B2EBF2;
+  --glass-medium: #80DEEA;
+  --glass-deep: #4DD0E1;
+  --cyber-charcoal: #1A2332;
+  --cyber-black: #0A0F1A;
+  
+  /* Glass Overlay Colors */
+  --glass-overlay-light: rgba(255, 255, 255, 0.18);
+  --glass-overlay-medium: rgba(0, 217, 255, 0.12);
+  --glass-overlay-strong: rgba(0, 184, 212, 0.25);
+  --glass-blur-light: rgba(255, 255, 255, 0.08);
+  
+  /* Spacing Scale (8px base) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  
+  /* Border Radius Scale - Heavy Rounds */
+  --radius-soft: 24px;
+  --radius-medium: 32px;
+  --radius-large: 48px;
+  --radius-pill: 9999px;
+  
+  /* Aqua Glass Shadows - Cyan Glows */
+  --shadow-sm: 
+    0 2px 12px rgba(0, 217, 255, 0.15),
+    0 1px 6px rgba(0, 184, 212, 0.08);
+  --shadow-md: 
+    0 4px 24px rgba(0, 217, 255, 0.22),
+    0 2px 12px rgba(29, 233, 182, 0.12),
+    0 0 32px rgba(0, 184, 212, 0.06);
+  --shadow-lg: 
+    0 12px 48px rgba(0, 217, 255, 0.3),
+    0 6px 24px rgba(0, 184, 212, 0.18),
+    0 0 64px rgba(29, 233, 182, 0.1);
+  --shadow-glow: 
+    0 0 32px rgba(0, 217, 255, 0.5),
+    0 0 64px rgba(29, 233, 182, 0.3),
+    0 8px 48px rgba(0, 184, 212, 0.25);
+  --shadow-inner: 
+    inset 0 2px 8px rgba(0, 184, 212, 0.1),
+    inset 0 -1px 4px rgba(255, 255, 255, 0.2);
+  
+  /* Typography */
+  --font-heading: 'Orbitron', 'Courier New', monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Transition Timing - Glassy Smoothness */
+  --transition-instant: 120ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  --transition-smooth: 320ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  --transition-slow: 540ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🎯 BASE STYLES & GEOMETRIC BACKGROUND
+   ══════════════════════════════════════════════════════════════ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--cyber-charcoal);
+  background: var(--cyber-black);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Geometric Pattern Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(135deg, #0A0F1A 0%, #1A2332 50%, #0A0F1A 100%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(0, 217, 255, 0.03) 35px,
+      rgba(0, 217, 255, 0.03) 70px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 35px,
+      rgba(29, 233, 182, 0.02) 35px,
+      rgba(29, 233, 182, 0.02) 70px
+    );
+  z-index: -2;
+}
+
+/* Frosted Glass Layer */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 20% 30%,
+    rgba(0, 217, 255, 0.08) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 80% 70%,
+    rgba(29, 233, 182, 0.06) 0%,
+    transparent 50%
+  );
+  backdrop-filter: blur(2px);
+  z-index: -1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--glass-white);
+  letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🔘 BUTTON STYLES - Glass Buttons with Glow
+   ══════════════════════════════════════════════════════════════ */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 14px var(--space-lg);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.15) 0%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+  border-radius: inherit;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, 
+    var(--aqua-electric), 
+    var(--mint-bright));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, 
+    var(--aqua-electric) 0%, 
+    var(--aqua-bright) 50%, 
+    var(--mint-bright) 100%);
+  color: var(--cyber-black);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(0, 217, 255, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(1);
+}
+
+.btn-secondary {
+  background: rgba(98, 0, 234, 0.25);
+  backdrop-filter: blur(20px);
+  color: var(--glass-white);
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(124, 77, 255, 0.4);
+}
+
+.btn-secondary:hover {
+  background: rgba(98, 0, 234, 0.35);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  color: var(--aqua-electric);
+  border: 2px solid var(--aqua-bright);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  background: rgba(0, 217, 255, 0.12);
+  border-color: var(--aqua-electric);
+}
+
+.btn-icon {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   📝 INPUT & FORM STYLES - Frosted Glass Inputs
+   ══════════════════════════════════════════════════════════════ */
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--glass-white);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(0, 217, 255, 0.2);
+  border-radius: var(--radius-soft);
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-inner);
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--aqua-electric);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    var(--shadow-inner),
+    0 0 0 4px rgba(0, 217, 255, 0.15),
+    var(--shadow-sm);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--glass-medium);
+  opacity: 0.6;
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--glass-cool);
+  font-family: var(--font-body);
+  letter-spacing: 0.03em;
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🎴 CARD STYLES - Frosted Glass Cards
+   ══════════════════════════════════════════════════════════════ */
+
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: var(--radius-medium);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 217, 255, 0.15);
+  transition: all var(--transition-smooth);
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--aqua-electric) 0%, 
+    var(--mint-bright) 50%, 
+    var(--purple-neon) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+  border-color: rgba(0, 217, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, 
+    rgba(0, 217, 255, 0.18) 0%, 
+    rgba(29, 233, 182, 0.15) 50%, 
+    rgba(98, 0, 234, 0.2) 100%);
+  backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.card-glow {
+  box-shadow: var(--shadow-glow);
+  background: linear-gradient(135deg, 
+    var(--aqua-electric) 0%, 
+    var(--mint-bright) 100%);
+  color: var(--cyber-black);
+}
+
+.card-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: var(--glass-white);
+}
+
+.card-glow .card-title {
+  color: var(--cyber-black);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ⚠️ ALERT STYLES - Glass Notifications
+   ══════════════════════════════════════════════════════════════ */
+
+.alert {
+  padding: var(--space-md);
+  border-radius: var(--radius-soft);
+  border-left: 4px solid;
+  margin-bottom: var(--space-md);
+  font-weight: 500;
+  backdrop-filter: blur(16px);
+}
+
+.alert-success {
+  background: rgba(29, 233, 182, 0.15);
+  border-color: var(--mint-bright);
+  color: var(--mint-bright);
+  box-shadow: 0 4px 16px rgba(29, 233, 182, 0.2);
+}
+
+.alert-error {
+  background: rgba(244, 67, 54, 0.15);
+  border-color: #F44336;
+  color: #FFCDD2;
+  box-shadow: 0 4px 16px rgba(244, 67, 54, 0.2);
+}
+
+.alert-warning {
+  background: rgba(255, 193, 7, 0.15);
+  border-color: #FFC107;
+  color: #FFF9C4;
+  box-shadow: 0 4px 16px rgba(255, 193, 7, 0.2);
+}
+
+.alert-info {
+  background: rgba(0, 217, 255, 0.15);
+  border-color: var(--aqua-electric);
+  color: var(--glass-cool);
+  box-shadow: 0 4px 16px rgba(0, 217, 255, 0.2);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🎯 BADGE & TAG STYLES - Pill Badges
+   ══════════════════════════════════════════════════════════════ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 6px var(--space-sm);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, 
+    var(--aqua-electric) 0%, 
+    var(--mint-bright) 100%);
+  color: var(--cyber-black);
+  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.03em;
+}
+
+.badge-secondary {
+  background: linear-gradient(135deg, 
+    var(--purple-electric) 0%, 
+    var(--purple-neon) 100%);
+  color: var(--glass-white);
+}
+
+.badge-outline {
+  background: transparent;
+  border: 2px solid var(--aqua-electric);
+  color: var(--aqua-electric);
+  box-shadow: none;
+  backdrop-filter: blur(12px);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🎭 UTILITY CLASSES
+   ══════════════════════════════════════════════════════════════ */
+
+/* Spacing Utilities */
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+
+/* Text Utilities */
+.text-gradient {
+  background: linear-gradient(135deg, 
+    var(--aqua-electric) 0%, 
+    var(--mint-bright) 50%, 
+    var(--purple-neon) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-normal { font-weight: 400; }
+
+/* Flex Utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+/* ══════════════════════════════════════════════════════════════
+   ✨ ANIMATIONS - Glassy Shimmer Effects
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes aqua-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 24px rgba(0, 217, 255, 0.4),
+      0 0 48px rgba(29, 233, 182, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 32px rgba(0, 217, 255, 0.6),
+      0 0 64px rgba(29, 233, 182, 0.4),
+      0 0 96px rgba(0, 184, 212, 0.2);
+  }
+}
+
+@keyframes glass-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes float-cyber {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-12px) translateX(6px);
+  }
+  66% {
+    transform: translateY(-6px) translateX(-6px);
+  }
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-glow {
+  animation: aqua-glow 2.5s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-flow 5s ease infinite;
+}
+
+.animate-float {
+  animation: float-cyber 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: glass-shimmer 2s infinite;
+}
+
+/* Loading Spinner - Aqua Ring */
+@keyframes spin-aqua {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(0, 217, 255, 0.2);
+  border-top-color: var(--aqua-electric);
+  border-radius: 50%;
+  animation: spin-aqua 0.8s linear infinite;
+  box-shadow: 0 0 24px rgba(0, 217, 255, 0.3);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🌐 CONTAINER & LAYOUT
+   ══════════════════════════════════════════════════════════════ */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🎨 TAILWIND COMPATIBILITY OVERRIDES
+   ══════════════════════════════════════════════════════════════ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 45% 8%;
+    --foreground: 180 100% 95%;
+    --primary: 184 100% 50%;
+    --primary-foreground: 210 45% 8%;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   🎯 GLASS SURFACE EFFECTS - Special Elements
+   ══════════════════════════════════════════════════════════════ */
+
+.glass-surface {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px rgba(0, 217, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.cyber-glow {
+  box-shadow: 
+    0 0 20px rgba(0, 217, 255, 0.4),
+    0 0 40px rgba(29, 233, 182, 0.2),
+    inset 0 0 20px rgba(0, 217, 255, 0.1);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   A completely unique background theme + CSS system has been 
+   generated and will never repeat.
+   ══════════════════════════════════════════════════════════════ */
