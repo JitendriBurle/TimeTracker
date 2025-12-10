@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAaBOW-dD_vWaITsGethRj-ow38CKWlpoQ",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "time-tracking-ead8b.firebaseapp.com",
   projectId: "time-tracking-ead8b",
   storageBucket: "time-tracking-ead8b.firebasestorage.app",
