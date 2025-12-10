@@ -91,5 +91,3 @@ https://github.com/JitendriBurle/TimeTracker
 ✅ Live App:
 https://time-tracker-244n.vercel.app/
 
-✅ Video Walkthrough:
-(Add your video link here)
